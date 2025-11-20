@@ -1,0 +1,79 @@
+########################################
+###   CLIENT (React)                  ###
+########################################
+
+# Node modules
+client/node_modules/
+
+# Build output
+client/build/
+client/dist/
+
+# Environment files
+client/.env
+client/.env.local
+client/.env.development
+client/.env.production
+client/.env.test
+
+# Logs
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+
+# React cache
+client/.parcel-cache/
+client/.cache/
+
+# Misc
+client/.DS_Store
+client/Thumbs.db
+
+
+########################################
+###   SERVER (.NET / C#)              ###
+########################################
+
+# Build folders
+server/bin/
+server/obj/
+
+# Visual Studio / C# local files
+server/.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Publish outputs
+server/publish/
+server/dist/
+
+# Secrets (recommended to ignore)
+server/appsettings.Development.json
+
+# Temporary files
+*.tmp
+*.temp
+
+
+########################################
+###   GENERAL                         ###
+########################################
+
+# VS Code settings (optional)
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Other cache
+*.cache
+*.swp
+*.bak
+
+# Optional lock files
+client/package-lock.json
+client/yarn.lock
