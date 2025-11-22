@@ -17,12 +17,34 @@ function App() {
     getTodos();
   }, []);
 
+  // async function getTodos() {
+  //   try {
+  //     const todos = await service.getTasks();
+  //     setTodos(todos);
+  //   } catch (err) {
+  //     console.error("Error fetching todos:", err);
+  //     if (err.response?.status === 401) {
+  //       navigate("/login");
+  //     }
+  //   }
+  // }
   async function getTodos() {
     try {
       const todos = await service.getTasks();
-      setTodos(todos);
+      console.log("Todos from API:", todos); // 🔍 הוסף את זה!
+      
+      // תיקון: וודא שזה מערך
+      if (Array.isArray(todos)) {
+        setTodos(todos);
+      } else if (todos && Array.isArray(todos.data)) {
+        setTodos(todos.data);
+      } else {
+        console.error("Invalid todos format:", todos);
+        setTodos([]);
+      }
     } catch (err) {
       console.error("Error fetching todos:", err);
+      setTodos([]); // 🔧 הוסף את זה!
       if (err.response?.status === 401) {
         navigate("/login");
       }
