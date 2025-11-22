@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 
-axios.defaults.baseURL = "http://localhost:5211";
+axios.defaults.baseURL = "process.env.REACT_APP_API_URL";
 
 export default function Login() {
   const [username, setUsername] = useState("");

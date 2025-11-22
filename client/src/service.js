@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // בסיס הכתובת של ה־API
-axios.defaults.baseURL = "http://localhost:5211";
+axios.defaults.baseURL = "process.env.REACT_APP_API_URL";
 
 // מוסיפים את ה־token לכל בקשה אוטומטית
 axios.interceptors.request.use(
