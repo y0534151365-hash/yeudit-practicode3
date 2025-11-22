@@ -42,15 +42,25 @@ builder.Services.AddAuthorization();
 //     });
 // });
 
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowAll", policy =>
+//     {
+//         policy.WithOrigins(
+//                 "https://grayover.onrender.com",
+//                 "http://localhost:3000",
+//                 "https://yeudit-practicode3-lastserver.onrender.com"
+//               )
+//               .AllowAnyMethod()
+//               .AllowAnyHeader()
+//               .AllowCredentials();
+//     });
+// });
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins(
-                "https://grayover.onrender.com",
-                "http://localhost:3000",
-                "https://yeudit-practicode3-lastserver.onrender.com"
-              )
+        policy.SetIsOriginAllowed(origin => true)
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
