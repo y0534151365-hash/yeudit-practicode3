@@ -122,6 +122,17 @@ var app = builder.Build();
 // }
 
 app.UseCors("AllowAll");
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == "OPTIONS")
+    {
+        context.Response.StatusCode = 200;
+        await context.Response.CompleteAsync();
+        return;
+    }
+    await next();
+});
 app.UseAuthentication();
 app.UseAuthorization();
 
