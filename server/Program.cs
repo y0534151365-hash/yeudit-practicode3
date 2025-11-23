@@ -56,11 +56,24 @@ builder.Services.AddAuthorization();
 //               .AllowCredentials();
 //     });
 // });
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowAll", policy =>
+//     {
+//         policy.SetIsOriginAllowed(origin => true)
+//               .AllowAnyMethod()
+//               .AllowAnyHeader()
+//               .AllowCredentials();
+//     });
+// });
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.SetIsOriginAllowed(origin => true)
+        policy.WithOrigins(
+                "https://grayover.onrender.com",
+                "http://localhost:3000"
+              )
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
