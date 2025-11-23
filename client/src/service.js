@@ -67,17 +67,10 @@
 
 import axios from "axios";
 
-// ✅ הגדרת ה-API URL ישירות (ללא process.env)
-// אם את ב-localhost זה ישתמש ב-localhost, אחרת ב-Render
-const API_URL = window.location.hostname === "localhost"
-  ? "http://localhost:5000" // או הפורט של ה-server שלך
-  : "https://yeudit-practicode3-lastserver.onrender.com";
+// ✅ כתובת השרת בענן
+axios.defaults.baseURL = "https://yeudit-practicode3-lastserver.onrender.com";
 
-axios.defaults.baseURL = API_URL;
-
-console.log("API Base URL:", axios.defaults.baseURL); // 🔍 debug
-
-// מוסיפים את ה-token לכל בקשה אוטומטית
+// הוספת token אוטומטית לכל בקשה
 axios.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -89,35 +82,25 @@ axios.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// במקרה של שגיאה - אם זה 401 (לא מורשה) נעבור לדף login
+// טיפול בשגיאות
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      console.warn("Session expired or unauthorized. Redirecting to login...");
-      localStorage.removeItem("token"); // ✅ נקה את ה-token
+      localStorage.removeItem("token");
       window.location = "/login";
-    } else {
-      console.error("Error in API call:", error);
     }
     return Promise.reject(error);
   }
 );
 
-// פונקציות גישה ל-API
 export const getTasks = async () => {
   const result = await axios.get("/tasks");
   return result.data;
 };
 
-
-
 export const addTask = async (task) => {
-  const result = await axios.post("/tasks", task, {
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
+  const result = await axios.post("/tasks", task);
   return result.data;
 };
 
@@ -137,5 +120,4 @@ export default {
   updateTask,
   deleteTask,
 };
-
 
