@@ -283,18 +283,33 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 // ✅ תיקון CORS - הגדרה נכונה
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowAll", policy =>
+//     {
+//         policy.WithOrigins(
+//                 "https://grayover.onrender.com",
+//                 "http://localhost:3000"
+//               )
+//               .AllowAnyMethod()
+//               .AllowAnyHeader()
+//               .AllowCredentials()
+//               .SetPreflightMaxAge(TimeSpan.FromMinutes(10)); // ✅ הוסף cache ל-preflight
+//     });
+// });
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
         policy.WithOrigins(
-                "https://grayover.onrender.com",
-                "http://localhost:3000"
+                "https://grayover.onrender.com",        // ✅ Client ב-Render
+                "http://localhost:3000",                // ✅ Client מקומי
+                "http://localhost:5173"                 // ✅ אם את משתמשת ב-Vite
               )
               .AllowAnyMethod()
               .AllowAnyHeader()
-              .AllowCredentials()
-              .SetPreflightMaxAge(TimeSpan.FromMinutes(10)); // ✅ הוסף cache ל-preflight
+              .AllowCredentials();
     });
 });
 
