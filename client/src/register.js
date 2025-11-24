@@ -66,14 +66,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
-import { API_URL } from "./config";
-
-
-
-// // ✅ הגדרת ה-URL ישירות
-// const API_URL = window.location.hostname === "localhost"
-//   ? "http://localhost:5000"
-//   : "https://yeudit-practicode3-lastserver.onrender.com";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -82,7 +74,6 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  axios.post(`${API_URL}/register`, { username, password })
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -99,8 +90,7 @@ export default function Register() {
     setLoading(true);
 
     try {
-      console.log("Registering to:", API_URL); // 🔍 debug
-      await axios.post(`${API_URL}/register`, {
+      await axios.post("/register", {
         username,
         password,
       });
@@ -108,9 +98,8 @@ export default function Register() {
       alert("נרשמת בהצלחה! עכשיו תוכל להתחבר.");
       navigate("/login");
     } catch (err) {
-      console.error("Register error:", err.response || err); // 🔍 debug
       const msg = err.response?.data || "שגיאה בהרשמה";
-      alert(typeof msg === "string" ? msg : "שם המשתמש כבר קיים");
+      alert(typeof msg === "string" ? msg : "שגיאה בהרשמה");
     } finally {
       setLoading(false);
     }
@@ -154,7 +143,7 @@ export default function Register() {
         <button type="submit" disabled={loading}>
           {loading ? "רושם..." : "הרשם"}
         </button>
-        
+
         <p>
           כבר יש לך חשבון? <a href="/login">להתחברות</a>
         </p>

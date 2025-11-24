@@ -44,24 +44,25 @@
 //     </form>
 //   );
 // }
-
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import { API_URL } from "./config";
-
-
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  axios.post(`${API_URL}/login`, { username, password })
+
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await axios.post("/login", { username, password });
+      const res = await axios.post("/login", {
+        username,
+        password,
+      });
+
       localStorage.setItem("token", res.data.token);
       alert("התחברת בהצלחה!");
       navigate("/tasks");
@@ -78,14 +79,19 @@ export default function Login() {
         placeholder="שם משתמש"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        required
       />
+
       <input
         type="password"
         placeholder="סיסמה"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        required
       />
+
       <button type="submit">התחבר</button>
+
       <p>
         אין לך חשבון? <a href="/register">להרשמה</a>
       </p>

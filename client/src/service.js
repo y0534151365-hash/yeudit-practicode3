@@ -64,14 +64,12 @@
 //   updateTask,
 //   deleteTask,
 // };
+import axios from "axios";
 
- import axios from "axios";
+// כתובת השרת שלך בענן
+const API_URL = "https://yeudit-practicode3-lastserver.onrender.com";
 
-// // ✅ כתובת השרת בענן
-// axios.defaults.baseURL = "https://yeudit-practicode3-lastserver.onrender.com";
-
-import { API_URL } from "./config";
-
+// הגדרת baseURL אחיד לכל הבקשות
 axios.defaults.baseURL = API_URL;
 
 // הוספת token אוטומטית לכל בקשה
@@ -86,7 +84,7 @@ axios.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// טיפול בשגיאות
+// טיפול בשגיאות שרת
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -124,4 +122,3 @@ export default {
   updateTask,
   deleteTask,
 };
-
