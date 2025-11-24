@@ -59,8 +59,8 @@ export default function Login() {
 
     try {
       const res = await axios.post("/login", {
-        username,
-        password,
+        Username: username,
+        Password: password,
       });
 
       localStorage.setItem("token", res.data.token);

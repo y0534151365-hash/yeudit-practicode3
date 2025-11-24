@@ -324,6 +324,17 @@ builder.Services.AddDbContext<ToDoDbContext>(options =>
 
 var app = builder.Build();
 
+// app.UseSwagger();
+// app.UseSwaggerUI(c =>
+// {
+//     c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo API v1");
+//     c.RoutePrefix = string.Empty;
+// });
+
+// app.UseCors("AllowAll");
+// app.UseAuthentication();
+// app.UseAuthorization();
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
@@ -331,9 +342,13 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty;
 });
 
+app.UseRouting();      // ← חדש
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
+
+// מכאן כל ה־MapGet / MapPost וכו'...
+
 
 int GetUserId(ClaimsPrincipal user)
 {

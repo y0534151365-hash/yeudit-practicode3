@@ -91,8 +91,8 @@ export default function Register() {
 
     try {
       await axios.post("/register", {
-        username,
-        password,
+        Username: username,
+        Password: password,
       });
 
       alert("נרשמת בהצלחה! עכשיו תוכל להתחבר.");
