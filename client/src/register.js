@@ -66,11 +66,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
+import { API_URL } from "./config";
 
-// ✅ הגדרת ה-URL ישירות
-const API_URL = window.location.hostname === "localhost"
-  ? "http://localhost:5000"
-  : "https://yeudit-practicode3-lastserver.onrender.com";
+axios.post(`${API_URL}/register`, { username, password })
+
+// // ✅ הגדרת ה-URL ישירות
+// const API_URL = window.location.hostname === "localhost"
+//   ? "http://localhost:5000"
+//   : "https://yeudit-practicode3-lastserver.onrender.com";
 
 export default function Register() {
   const [username, setUsername] = useState("");
