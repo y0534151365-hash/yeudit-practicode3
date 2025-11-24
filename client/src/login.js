@@ -51,13 +51,13 @@ import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { API_URL } from "./config";
 
-axios.post(`${API_URL}/login`, { username, password })
+
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  axios.post(`${API_URL}/login`, { username, password })
   const handleLogin = async (e) => {
     e.preventDefault();
     try {

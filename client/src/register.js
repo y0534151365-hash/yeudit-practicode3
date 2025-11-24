@@ -68,7 +68,7 @@ import { useNavigate } from "react-router-dom";
 import "./register.css";
 import { API_URL } from "./config";
 
-axios.post(`${API_URL}/register`, { username, password })
+
 
 // // ✅ הגדרת ה-URL ישירות
 // const API_URL = window.location.hostname === "localhost"
@@ -82,6 +82,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  axios.post(`${API_URL}/register`, { username, password })
   const handleRegister = async (e) => {
     e.preventDefault();
 
