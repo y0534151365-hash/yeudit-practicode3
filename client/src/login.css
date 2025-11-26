@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #f0fcff;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,11 +11,10 @@ body {
 }
 
 form {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
   padding: 50px 40px;
   border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 400px;
   display: flex;
@@ -33,7 +32,7 @@ form::before {
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #78e6f0 0%, #a24b85 100%);
 }
 
 @keyframes slideUp {
@@ -49,55 +48,57 @@ form::before {
 
 h2 {
   text-align: center;
-  color: #2d3748;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
-  margin: 0 0 10px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 0 0 20px 0;
+  background: linear-gradient(135deg, #78e6f0 0%, #a24b85 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 input {
-  padding: 16px 20px;
-  border: 2px solid #e2e8f0;
+  padding: 18px 24px;
+  border: 2px solid #e8f4f8;
   border-radius: 12px;
   font-size: 16px;
   transition: all 0.3s ease;
-  background: #f7fafc;
+  background: #f8fcfd;
   color: #2d3748;
+  direction: rtl;
+  text-align: right;
+}
+
+input::placeholder {
+  color: #a0c4d4;
+  font-weight: 300;
 }
 
 input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #78e6f0;
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 4px rgba(120, 230, 240, 0.1);
   transform: translateY(-2px);
 }
 
-input::placeholder {
-  color: #a0aec0;
-}
-
 button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #78e6f0 0%, #a24b85 100%);
   color: white;
-  padding: 16px 20px;
-  font-size: 17px;
+  padding: 18px 24px;
+  font-size: 18px;
   font-weight: 600;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 20px rgba(120, 230, 240, 0.3);
   margin-top: 10px;
 }
 
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 12px 30px rgba(120, 230, 240, 0.4);
 }
 
 button:active {
@@ -108,11 +109,12 @@ p {
   text-align: center;
   font-size: 15px;
   color: #718096;
-  margin: 10px 0 0 0;
+  margin: 15px 0 0 0;
+  direction: rtl;
 }
 
 a {
-  color: #667eea;
+  color: #78e6f0;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.2s ease;
@@ -120,7 +122,7 @@ a {
 }
 
 a:hover {
-  color: #764ba2;
+  color: #a24b85;
 }
 
 a::after {
@@ -130,7 +132,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(90deg, #78e6f0 0%, #a24b85 100%);
   transition: width 0.3s ease;
 }
 
@@ -144,6 +146,6 @@ a:hover::after {
   }
   
   h2 {
-    font-size: 28px;
+    font-size: 32px;
   }
 }
